@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-02-feedback",
+  "name": "goit-react-hw-09-feedback",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://OlehSydorenko25.githube.io/goit-react-hw-09-feedback",
+  "homepage": "https://OlehSydorenko25.github.io/goit-react-hw-09-feedback",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.9",

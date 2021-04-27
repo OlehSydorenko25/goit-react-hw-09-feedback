@@ -1,8 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import styles from './FeedbackOptions.module.css';
+import actions from '../../../redux/feedback-actions';
 
-const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+const FeedbackOptions = ({ options }) => {
+  const dispatch = useDispatch();
+
+  function clickBtn(e) {
+    const { name } = e.target;
+
+    switch (name) {
+      case 'good':
+        dispatch(actions.countGoodFeedback());
+        break;
+
+      case 'neutral':
+        dispatch(actions.countNeuteralFeedback());
+        break;
+
+      case 'bad':
+        dispatch(actions.countBadFeedback());
+        break;
+
+      default:
+        return;
+    }
+  }
+
   return (
     <div>
       {options.map(option => {
@@ -11,7 +36,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
             key={option}
             type="button"
             name={option}
-            onClick={onLeaveFeedback}
+            onClick={clickBtn}
             className={styles.button}
           >
             {option}
@@ -23,7 +48,6 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  onLeaveFeedback: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.string.isRequired),
 };
 

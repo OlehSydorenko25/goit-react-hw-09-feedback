@@ -1,8 +1,14 @@
 import React from 'react';
 import Notification from '../Notification/Notification';
+import { useSelector } from 'react-redux';
+import selectors from '../../../redux/feedback-selectors';
 import PropTypes from 'prop-types';
 
-const Statistics = ({ good, neutral, bad }) => {
+const Statistics = () => {
+  const good = useSelector(selectors.getGoodFedback);
+  const neutral = useSelector(selectors.getNeutralFedback);
+  const bad = useSelector(selectors.getBadFedback);
+
   const total = good + neutral + bad;
   const positivePercentage = Math.round((good * 100) / total);
 
